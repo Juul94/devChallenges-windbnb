@@ -1,0 +1,11 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/********** TYPOGRAPHY **********/
+
+.MuiLink-root {
+    margin-right: 8px !important;
+    margin-left: 8px !important;
+}
