@@ -4,7 +4,4 @@ import { useTheme } from '@mui/material/styles';
 
 const theme = useTheme();
 
-export const StyledButtonDiv = styled(Box)`
-    padding: 0;
-    border-radius:;
-`;
+export const StyledButtonDiv = styled(Box)``;

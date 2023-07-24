@@ -3,7 +3,7 @@ import Home from './pages/home';
 import Layout from './components/pageSetup/layout/layout';
 import { Theme } from '@mui/material/styles';
 
-declare module '@mui/styles/defaultTheme' {
+declare module '@mui/material/styles' {
     interface DefaultTheme extends Theme {}
 }
 

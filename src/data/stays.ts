@@ -1,7 +1,8 @@
-import { Stays } from '../types/stay';
+import { Stay } from '../types/stays';
 
-export const stays: Stays = [
+export const stays: Stay[] = [
     {
+        uid: '711c6f5c-c001-4aae-bde2-f3043f66d5d2',
         city: 'Helsinki',
         country: 'Finland',
         superHost: false,
@@ -13,6 +14,7 @@ export const stays: Stays = [
         photo: 'https://images.unsplash.com/photo-1505873242700-f289a29e1e0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=2255&q=80',
     },
     {
+        uid: 'f6958cae-d176-49a6-91bc-4f25982c4d29',
         city: 'Turku',
         country: 'Finland',
         superHost: false,
@@ -24,6 +26,7 @@ export const stays: Stays = [
         photo: 'https://images.unsplash.com/photo-1554995207-c18c203602cb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80',
     },
     {
+        uid: '7d1e532a-bdc1-4bfd-8266-771eaa72d4e5',
         city: 'Helsinki',
         country: 'Finland',
         superHost: true,
@@ -35,6 +38,7 @@ export const stays: Stays = [
         photo: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80',
     },
     {
+        uid: '1754e00d-5cc2-4d63-bad2-162f42cd3d45',
         city: 'Helsinki',
         country: 'Finland',
         superHost: false,
@@ -46,6 +50,7 @@ export const stays: Stays = [
         photo: 'https://images.unsplash.com/photo-1556020685-ae41abfc9365?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80',
     },
     {
+        uid: '8f62cbfd-35eb-419e-aff4-efef981ae97e',
         city: 'Turku',
         country: 'Finland',
         superHost: true,
@@ -57,6 +62,7 @@ export const stays: Stays = [
         photo: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2249&q=80',
     },
     {
+        uid: '6583af52-505f-4451-8314-71a5a096ee27',
         city: 'Vaasa',
         country: 'Finland',
         superHost: true,
@@ -68,6 +74,7 @@ export const stays: Stays = [
         photo: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80',
     },
     {
+        uid: '8ab1bdae-c6ed-4e4f-8772-14c022977354',
         city: 'Vaasa',
         country: 'Finland',
         superHost: false,
@@ -79,6 +86,7 @@ export const stays: Stays = [
         photo: 'https://images.unsplash.com/photo-1505693314120-0d443867891c?ixlib=rb-1.2.1&auto=format&fit=crop&w=2591&q=80',
     },
     {
+        uid: 'e475a39d-bcd1-4a3f-8e4e-1f244a503bfe',
         city: 'Oulu',
         country: 'Finland',
         superHost: false,
@@ -90,6 +98,7 @@ export const stays: Stays = [
         photo: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80',
     },
     {
+        uid: '4b329091-5266-4741-bf1a-b39724a08017',
         city: 'Oulu',
         country: 'Finland',
         superHost: false,
@@ -101,6 +110,7 @@ export const stays: Stays = [
         photo: 'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2255&q=80',
     },
     {
+        uid: 'da7ef597-02c3-48b6-94a5-15115e448d88',
         city: 'Oulu',
         country: 'Finland',
         superHost: true,
@@ -112,6 +122,7 @@ export const stays: Stays = [
         photo: 'https://images.unsplash.com/photo-1522156373667-4c7234bbd804?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjF9&auto=format&fit=crop&w=930&q=80',
     },
     {
+        uid: '6ab1fb44-2de5-4ae3-babb-573404e9e59d',
         city: 'Vaasa',
         country: 'Finland',
         superHost: false,
@@ -123,6 +134,7 @@ export const stays: Stays = [
         photo: 'https://images.unsplash.com/photo-1494203484021-3c454daf695d?ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80',
     },
     {
+        uid: '1a46942a-d693-4897-80ae-50b3237f4ab3',
         city: 'Helsinki',
         country: 'Finland',
         superHost: false,
@@ -134,6 +146,7 @@ export const stays: Stays = [
         photo: 'https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80',
     },
     {
+        uid: 'd5d808a2-bb76-4702-aca2-0c56e7d4740d',
         city: 'Turku',
         country: 'Finland',
         superHost: false,
@@ -145,6 +158,7 @@ export const stays: Stays = [
         photo: 'https://images.unsplash.com/photo-1519643381401-22c77e60520e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjE3MzYxfQ&auto=format&fit=crop&w=2253&q=80',
     },
     {
+        uid: '2f716c78-b99d-4e14-977c-13c16355befa',
         city: 'Turku',
         country: 'Finland',
         superHost: true,

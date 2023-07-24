@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Container, Link, Typography, Button, Box } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import logo from '~/img/logo.png';
+import logo from '~/img/logo.jpg';
 import SearchHeader from '~/components/searchModal/searchModal';
-import { GetListRequestQuery } from '~/types/stay';
+import { GetListRequestQuery } from '~/types/stays';
 import { useTheme } from '@mui/material/styles';
 
 const Header = () => {
@@ -41,7 +41,7 @@ const Header = () => {
                 justifyContent: 'space-between',
                 marginTop: 4,
             }}>
-            <Link href='/'>
+            <Link href='/' sx={{ m: '0 !important' }}>
                 <img src={logo} alt='Windbnb logo' />
             </Link>
 

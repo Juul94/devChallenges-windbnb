@@ -1,4 +1,5 @@
 export interface Stay {
+    uid: string;
     city: string;
     country: string;
     superHost: boolean;
@@ -9,8 +10,6 @@ export interface Stay {
     beds: number | null;
     photo: string;
 }
-
-export type Stays = Stay[];
 
 export interface Guests {
     adults: number;
