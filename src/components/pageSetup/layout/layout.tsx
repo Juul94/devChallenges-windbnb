@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
-import Header from './header';
-import Footer from './footer';
+import Header from '../header/header';
+import Footer from '../footer/footer';
 import { Container } from '@mui/material';
 
 interface LayoutProps {

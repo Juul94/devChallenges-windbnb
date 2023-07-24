@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/home';
-import Layout from './components/pageSetup/layout';
+import Layout from './components/pageSetup/layout/layout';
 import { Theme } from '@mui/material/styles';
 
 declare module '@mui/styles/defaultTheme' {
