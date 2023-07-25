@@ -1,19 +1,21 @@
-import { FC } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { Box, Grid, Typography, Chip } from '@mui/material';
 import { Stay } from '~/types/stays';
 import { useTheme } from '@mui/material/styles';
 import StarRateIcon from '@mui/icons-material/StarRate';
+import { FlexBox } from './stayResultsStyles';
 
 interface StayResultsProps {
-    stays: Stay[];
+    filteredStays: Stay[];
+    handleTotalStays: (total: number) => void;
 }
 
-const StayResults: FC<StayResultsProps> = ({ stays }) => {
+const StayResults: FC<StayResultsProps> = ({ filteredStays, handleTotalStays }) => {
     const theme = useTheme();
 
     return (
         <Grid container spacing={4}>
-            {stays.map((stay: Stay, index: number) => {
+            {filteredStays.map((stay: Stay, index: number) => {
                 return (
                     <Grid
                         key={`${stay.uid}-${index}`}
@@ -55,38 +57,36 @@ const StayResults: FC<StayResultsProps> = ({ stays }) => {
                                 justifyContent: 'space-between',
                                 mt: 1.5,
                             }}>
-                            {stay.superHost && (
-                                <Chip
-                                    label={
-                                        <Typography
-                                            variant='subtitle1'
-                                            color={theme.palette.grey[300]}
-                                            sx={{
-                                                fontSize: '12px',
-                                                fontWeight: 700,
-                                                textTransform: 'uppercase',
-                                            }}>
-                                            Super Host
-                                        </Typography>
-                                    }
-                                    variant='outlined'
-                                    sx={{
-                                        border: `1px solid ${theme.palette.grey[300]}`,
-                                        textTransform: 'uppercase',
-                                    }}
-                                />
-                            )}
+                            <FlexBox>
+                                {stay.superHost && (
+                                    <Chip
+                                        label={
+                                            <Typography
+                                                variant='subtitle1'
+                                                color={theme.palette.grey[300]}
+                                                sx={{
+                                                    fontSize: '12px',
+                                                    fontWeight: 700,
+                                                    textTransform: 'uppercase',
+                                                }}>
+                                                Super Host
+                                            </Typography>
+                                        }
+                                        variant='outlined'
+                                        sx={{
+                                            border: `1px solid ${theme.palette.grey[300]}`,
+                                            textTransform: 'uppercase',
+                                            mr: 1,
+                                        }}
+                                    />
+                                )}
 
-                            <Typography variant='body1' color={theme.palette.grey[200]}>
-                                {stay.type} {stay.beds && `- ${stay?.beds} beds`}
-                            </Typography>
+                                <Typography variant='body1' color={theme.palette.grey[200]}>
+                                    {stay.type} {stay.beds && `- ${stay?.beds} beds`}
+                                </Typography>
+                            </FlexBox>
 
-                            <Box
-                                sx={{
-                                    display: 'flex',
-                                    flexDirection: 'row',
-                                    alignItems: 'center',
-                                }}>
+                            <FlexBox>
                                 <StarRateIcon
                                     sx={{
                                         width: '20px',
@@ -98,7 +98,7 @@ const StayResults: FC<StayResultsProps> = ({ stays }) => {
                                 <Typography variant='body1' color={theme.palette.grey[300]}>
                                     {stay.rating}
                                 </Typography>
-                            </Box>
+                            </FlexBox>
                         </Box>
 
                         <Typography

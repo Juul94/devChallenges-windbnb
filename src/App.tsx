@@ -1,26 +1,39 @@
+import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/home';
 import Layout from './components/pageSetup/layout/layout';
 import { Theme } from '@mui/material/styles';
+import { GetListRequestQuery } from './types/stays';
+import Header from '~/components/pageSetup/header/header';
 
 declare module '@mui/material/styles' {
     interface DefaultTheme extends Theme {}
 }
 
-const App = () => (
-    <Routes>
-        {/* Route with id */}
-        {/* <Route path='/:paramId/home' element={<Home />} /> */}
+const App = () => {
+    const [query, setQuery] = useState<GetListRequestQuery>({
+        location: '',
+        guests: { adults: 0, children: 0 },
+    });
 
-        <Route
-            path='/'
-            element={
-                <Layout>
-                    <Home />
-                </Layout>
-            }
-        />
-    </Routes>
-);
+    return (
+        <>
+            <Header query={query} setQuery={setQuery} />
+            <Routes>
+                {/* Route with id */}
+                {/* <Route path='/:paramId/home' element={<Home />} /> */}
+
+                <Route
+                    path='/'
+                    element={
+                        <Layout>
+                            <Home query={query} />
+                        </Layout>
+                    }
+                />
+            </Routes>
+        </>
+    );
+};
 
 export default App;

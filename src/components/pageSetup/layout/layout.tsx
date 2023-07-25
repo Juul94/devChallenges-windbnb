@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import Header from '../header/header';
 import Footer from '../footer/footer';
 import { Container } from '@mui/material';
 
@@ -10,7 +9,6 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
     return (
         <>
-            <Header />
             <Container sx={{ mt: 10 }}>{children}</Container>
             <Footer />
         </>

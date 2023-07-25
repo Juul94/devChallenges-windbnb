@@ -1,12 +1,44 @@
+import { useState, useEffect } from 'react';
 import { Box, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import StayResults from '~/components/stayResults/stayResults';
 import { stays } from '~/data/stays';
+import { GetListRequestQuery, Stay } from '~/types/stays';
 
-const LandingPage = () => {
+interface HomeProps {
+    query: GetListRequestQuery | null;
+}
+
+const Home = ({ query }: HomeProps) => {
     const theme = useTheme();
 
-    console.log(1, stays);
+    const [filteredStays, setFilteredStays] = useState<Stay[]>();
+    const [totalStays, setTotalStays] = useState<number>(0);
+
+    const handleTotalStays = (total: number) => {
+        setTotalStays(total);
+    };
+
+    const sortByRating = () => {
+        const sorted = [...stays].sort((a, b) => b.rating - a.rating);
+        handleTotalStays(sorted.length);
+        setFilteredStays(sorted);
+    };
+
+    const filterStaysByLocation = (staysList: Stay[], location: string) => {
+        const [city, country] = location.split(', ');
+        return staysList.filter((stay) => stay.city === city && stay.country === country);
+    };
+
+    useEffect(() => {
+        if (query?.location) {
+            const filtered = filterStaysByLocation(stays, query.location);
+            setFilteredStays(filtered);
+            handleTotalStays(filtered.length);
+        } else {
+            sortByRating();
+        }
+    }, [query]);
 
     return (
         <>
@@ -19,17 +51,19 @@ const LandingPage = () => {
                     mb: 1,
                 }}>
                 <Typography variant='h1' color={theme.palette.grey[400]}>
-                    Most popular stays
+                    {query?.location ? query.location : 'Most popular stays'}
                 </Typography>
 
                 <Typography variant='body1' color={theme.palette.grey[300]}>
-                    12+ stays (Count)
+                    {totalStays && totalStays > 0
+                        ? `${totalStays} stay${totalStays > 1 ? 's' : ''}`
+                        : ''}
                 </Typography>
             </Box>
 
-            <StayResults stays={stays} />
+            <StayResults filteredStays={filteredStays || []} handleTotalStays={handleTotalStays} />
         </>
     );
 };
 
-export default LandingPage;
+export default Home;

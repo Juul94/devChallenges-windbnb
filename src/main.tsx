@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App.tsx';
+import App from '~/App';
 import './index.css';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
-import theme from './theme/theme.ts';
+import theme from '~/theme/theme';
 
 ReactDOM.render(
     <React.StrictMode>

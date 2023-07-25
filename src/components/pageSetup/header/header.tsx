@@ -1,25 +1,20 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { Container, Link, Typography, Button, Box } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import logo from '~/img/logo.jpg';
-import SearchHeader from '~/components/searchModal/searchModal';
+import SearchModal from '~/components/searchModal/searchModal';
 import { GetListRequestQuery } from '~/types/stays';
 import { useTheme } from '@mui/material/styles';
 
-const Header = () => {
+interface HeaderProps {
+    query: GetListRequestQuery;
+    setQuery: (query: GetListRequestQuery) => void;
+}
+
+const Header: FC<HeaderProps> = ({ query, setQuery }) => {
     const theme = useTheme();
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [query, setQuery] = useState<GetListRequestQuery>();
-
-    /*
-        query:
-
-        location: city/country,
-        guests: { adults, children }
-    */
-
-    const text1 = 'Find location';
+    const text1 = '';
     const text2 = 'Add guests';
 
     const [isModalOpen, setModalOpen] = useState(false);
@@ -31,6 +26,9 @@ const Header = () => {
     const handleModalClose = () => {
         setModalOpen(false);
     };
+
+    const locationCheck = query?.location;
+    const guestCheck = query?.guests && (query.guests.adults > 0 || query.guests.children > 0);
 
     return (
         <Container
@@ -60,7 +58,7 @@ const Header = () => {
                 disableRipple>
                 <Typography
                     variant='body2'
-                    color={theme.palette.grey[100]}
+                    color={locationCheck ? theme.palette.grey[400] : theme.palette.grey[100]}
                     sx={{
                         px: 2,
                         py: 2,
@@ -68,21 +66,22 @@ const Header = () => {
                         borderRightWidth: 1,
                         borderRightStyle: 'solid',
                     }}>
-                    {text1}
+                    {locationCheck || 'Find location'}
                 </Typography>
 
                 <Typography
                     variant='body2'
-                    color={theme.palette.grey[100]}
+                    color={guestCheck ? theme.palette.grey[400] : theme.palette.grey[100]}
                     sx={{
                         py: 2,
                         px: 2,
                         borderRightColor: theme.palette.grey[50],
                         borderRightWidth: 1,
                         borderRightStyle: 'solid',
-                    }}
-                    onClick={() => console.log('guests clicked')}>
-                    {text2}
+                    }}>
+                    {guestCheck
+                        ? `${query?.guests?.adults}, ${query?.guests?.children}`
+                        : 'Add guests'}
                 </Typography>
 
                 <Box
@@ -99,7 +98,12 @@ const Header = () => {
                 </Box>
             </Button>
 
-            <SearchHeader open={isModalOpen} onClose={handleModalClose} />
+            <SearchModal
+                open={isModalOpen}
+                onClose={handleModalClose}
+                query={query}
+                setQuery={setQuery}
+            />
         </Container>
     );
 };

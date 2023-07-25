@@ -21,11 +21,15 @@ interface BoxProps {
 interface InputLabelBorderProps extends BoxProps {
     title: string;
     placeholder: string;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    value?: string;
 }
 
 const InputLabelBorder: FC<InputLabelBorderProps> = ({
     title,
     placeholder,
+    onChange,
+    value,
     borderColor,
     borderWidth,
     borderStyle,
@@ -55,6 +59,8 @@ const InputLabelBorder: FC<InputLabelBorderProps> = ({
                     id='inputLocation'
                     placeholder={placeholder}
                     variant='outlined'
+                    onChange={onChange}
+                    value={value}
                 />
             </Box>
         </Box>
