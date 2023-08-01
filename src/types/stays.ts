@@ -18,5 +18,5 @@ export interface Guests {
 
 export interface GetListRequestQuery {
     location: string;
-    guests: Guests | undefined;
+    guests: Guests;
 }

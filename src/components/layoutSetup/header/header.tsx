@@ -27,6 +27,8 @@ const Header: FC<HeaderProps> = ({ query, setQuery }) => {
     const locationCheck = query?.location;
     const guestCheck = query?.guests && (query.guests.adults > 0 || query.guests.children > 0);
 
+    const totalGuestsText = `${query.guests.adults + query.guests.children} guests`;
+
     return (
         <Container
             sx={{
@@ -76,9 +78,7 @@ const Header: FC<HeaderProps> = ({ query, setQuery }) => {
                         borderRightWidth: 1,
                         borderRightStyle: 'solid',
                     }}>
-                    {guestCheck
-                        ? `${query?.guests?.adults}, ${query?.guests?.children}`
-                        : 'Add guests'}
+                    {guestCheck ? totalGuestsText : 'Add guests'}
                 </Typography>
 
                 <Box

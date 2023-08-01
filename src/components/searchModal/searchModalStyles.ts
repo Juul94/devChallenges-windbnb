@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import styled from '@emotion/styled';
 
-export const StyledBox = styled(Box)`
+export const FlexContainer = styled(Box)`
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -28,7 +28,7 @@ export const StyledModal = styled(Box)`
     width: 100%;
     outline: none;
     z-index: 1301;
-    padding: 95px;
+    padding: 95px 95px 50px 95px;
 `;
 
 export const StyledButtonDiv = styled(Box)`

@@ -25,19 +25,31 @@ const Home = ({ query }: HomeProps) => {
         setFilteredStays(sorted);
     };
 
-    const filterStaysByLocation = (staysList: Stay[], location: string) => {
+    const filterStays = (
+        staysList: Stay[],
+        location: string,
+        guests: { adults: number; children: number },
+    ) => {
         const [city, country] = location.split(', ');
-        return staysList.filter((stay) => stay.city === city && stay.country === country);
+        return staysList.filter((stay) => {
+            const locationMatch = !location || (stay.city === city && stay.country === country);
+            const guestsMatch = !guests || stay.maxGuests >= guests.adults + guests.children;
+            return locationMatch && guestsMatch;
+        });
     };
 
     useEffect(() => {
-        if (query?.location) {
-            const filtered = filterStaysByLocation(stays, query.location);
-            setFilteredStays(filtered);
-            handleTotalStays(filtered.length);
-        } else {
-            sortByRating();
-        }
+        sortByRating();
+    }, []);
+
+    useEffect(() => {
+        const filtered = filterStays(
+            stays,
+            query?.location || '',
+            query?.guests || { adults: 0, children: 0 },
+        );
+        setFilteredStays(filtered);
+        handleTotalStays(filtered.length);
     }, [query]);
 
     return (
