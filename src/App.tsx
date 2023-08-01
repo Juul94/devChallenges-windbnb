@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/home';
-import Layout from './components/pageSetup/layout/layout';
+import Layout from './components/layoutSetup/layout/layout';
 import { Theme } from '@mui/material/styles';
 import { GetListRequestQuery } from './types/stays';
-import Header from '~/components/pageSetup/header/header';
+import Header from '~/components/layoutSetup/header/header';
 
 declare module '@mui/material/styles' {
     interface DefaultTheme extends Theme {}
