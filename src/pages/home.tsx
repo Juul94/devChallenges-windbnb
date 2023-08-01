@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Box, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import StayResults from '~/components/stayResults/stayResults';
 import { stays } from '~/data/stays';
 import { GetListRequestQuery, Stay } from '~/types/stays';
+import { Box, Typography } from '@mui/material';
 
 interface HomeProps {
     query: GetListRequestQuery | null;

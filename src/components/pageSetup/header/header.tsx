@@ -14,9 +14,6 @@ interface HeaderProps {
 const Header: FC<HeaderProps> = ({ query, setQuery }) => {
     const theme = useTheme();
 
-    const text1 = '';
-    const text2 = 'Add guests';
-
     const [isModalOpen, setModalOpen] = useState(false);
 
     const handleModalOpen = () => {
