@@ -29,21 +29,18 @@ const theme = createTheme({
             fontSize: '14px',
             fontWeight: 500,
             lineHeight: 1,
-            textTransform: 'capitalize',
         },
         body2: {
             fontFamily: 'Mulish, sans-serif',
             fontSize: '14px',
             fontWeight: 400,
             lineHeight: 1,
-            textTransform: 'capitalize',
         },
         subtitle1: {
             fontFamily: 'Montserrat, sans-serif',
             fontSize: '16px',
             fontWeight: 600,
             lineHeight: 1.5,
-            textTransform: 'capitalize',
         },
         subtitle2: {
             fontFamily: 'Mulish, sans-serif',
