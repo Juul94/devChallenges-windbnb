@@ -136,7 +136,7 @@ const SearchModal = ({ open, onClose, query, setQuery }: SearchHeaderProps) => {
                                     onClick={onClose}
                                     sx={{
                                         borderRadius: 3,
-                                        textTransform: 'capitalize',
+                                        textTransform: 'none',
                                     }}>
                                     Show stays
                                 </Button>

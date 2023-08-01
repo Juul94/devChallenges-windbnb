@@ -65,7 +65,7 @@ const StayResults: FC<StayResultsProps> = ({ filteredStays, handleTotalStays }) 
                                                 variant='subtitle1'
                                                 color={theme.palette.grey[300]}
                                                 sx={{
-                                                    fontSize: '12px',
+                                                    fontSize: '10px',
                                                     fontWeight: 700,
                                                     textTransform: 'uppercase',
                                                 }}>
