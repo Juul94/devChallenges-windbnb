@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import Footer from '../footer/footer';
+import Footer from '~/components/layoutSetup/footer/footer';
 import { Container } from '@mui/material';
 
 interface LayoutProps {

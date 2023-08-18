@@ -1,13 +1,16 @@
 import { useState } from 'react';
 import { Modal, Fade, Container, Button, Box, Typography, Grid } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
-import InputLabelBorder from '../inputLabelBorder/inputLabelBorder';
-import { FlexContainer, StyledModal, StyledButtonDiv } from './searchModalStyles';
+import InputLabelBorder from '~/components/inputLabelBorder/inputLabelBorder';
+import {
+    FlexContainer,
+    StyledModal,
+    StyledButtonDiv,
+} from '~/components/searchModal/searchModalStyles';
 import { useTheme } from '@mui/material/styles';
 import PlaceIcon from '@mui/icons-material/Place';
 import { stays } from '~/data/stays';
-import { GetListRequestQuery, Guests, Stay } from '~/types/stays';
-import AmountCounter from '../amountCounter/amountCounter';
+import { GetListRequestQuery, Stay } from '~/types/stays';
+import AmountCounter from '~/components/amountCounter/amountCounter';
 
 interface SearchHeaderProps {
     open: boolean;

@@ -1,9 +1,9 @@
-import { FC, useState, useEffect } from 'react';
+import { FC } from 'react';
 import { Box, Grid, Typography, Chip } from '@mui/material';
 import { Stay } from '~/types/stays';
 import { useTheme } from '@mui/material/styles';
 import StarRateIcon from '@mui/icons-material/StarRate';
-import { FlexBox } from './stayResultsStyles';
+import { FlexBox } from '~/components/stayResults/stayResultsStyles';
 
 interface StayResultsProps {
     filteredStays: Stay[];

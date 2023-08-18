@@ -1,4 +1,4 @@
-import { Stay } from '../types/stays';
+import { Stay } from '~/types/stays';
 
 export const stays: Stay[] = [
     {
