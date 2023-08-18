@@ -11,6 +11,7 @@ import PlaceIcon from '@mui/icons-material/Place';
 import { stays } from '~/data/stays';
 import { GetListRequestQuery, Stay } from '~/types/stays';
 import AmountCounter from '~/components/amountCounter/amountCounter';
+import { useResponsiveQueries } from '~/utility/mediaQueries';
 
 interface SearchHeaderProps {
     open: boolean;
@@ -21,6 +22,7 @@ interface SearchHeaderProps {
 
 const SearchModal = ({ open, onClose, query, setQuery }: SearchHeaderProps) => {
     const theme = useTheme();
+    const { isTablet } = useResponsiveQueries();
 
     const [viewGuestOptions, setViewGuestOptions] = useState<boolean>(false);
     const [searchTerm, setSearchTerm] = useState<string>('');
@@ -32,7 +34,7 @@ const SearchModal = ({ open, onClose, query, setQuery }: SearchHeaderProps) => {
 
     const uniqueLocations = new Set<string>();
 
-    const locationFilter = stays.reduce<Stay[]>((filtered, stay) => {
+    const locationFilter: Stay[] = stays.reduce<Stay[]>((filtered, stay) => {
         const cityLower = stay.city.toLowerCase();
         const countryLower = stay.country.toLowerCase();
 
@@ -71,28 +73,26 @@ const SearchModal = ({ open, onClose, query, setQuery }: SearchHeaderProps) => {
 
     const handleViewGuestOptions = () => setViewGuestOptions(!viewGuestOptions);
 
+    const updateGuests = (guestType: keyof typeof query.guests, newCount: number) => {
+        setQuery({
+            ...query,
+            guests: {
+                ...query.guests,
+                [guestType]: newCount,
+            },
+        });
+    };
+
     const handleGuestChange = (
-        guestType: keyof GetListRequestQuery['guests'],
+        guestType: keyof typeof query.guests,
         operation: 'increment' | 'decrement',
     ) => {
+        const currentCount = query.guests[guestType];
+
         if (operation === 'increment') {
-            setQuery({
-                ...query,
-                guests: {
-                    ...query.guests,
-                    [guestType]: query.guests[guestType] + 1,
-                },
-            });
-        } else if (operation === 'decrement') {
-            if (query.guests[guestType] > 0) {
-                setQuery({
-                    ...query,
-                    guests: {
-                        ...query.guests,
-                        [guestType]: query.guests[guestType] - 1,
-                    },
-                });
-            }
+            updateGuests(guestType, currentCount + 1);
+        } else if (operation === 'decrement' && currentCount > 0) {
+            updateGuests(guestType, currentCount - 1);
         }
     };
 
@@ -105,13 +105,28 @@ const SearchModal = ({ open, onClose, query, setQuery }: SearchHeaderProps) => {
                 backdrop: {
                     style: {
                         zIndex: 1300,
-                        backgroundColor: 'rgba(79, 79, 79, 0.4)',
+                        backgroundColor: 'rgba(0, 0, 0, 0.5)',
                     },
                 },
             }}>
             <Fade in={open}>
-                <StyledModal>
+                <StyledModal sx={isTablet ? { pt: 3 } : { p: '95px 95px 50px 95px' }}>
                     <Container maxWidth='lg'>
+                        {isTablet && (
+                            <Button
+                                variant='contained'
+                                color='primary'
+                                onClick={onClose}
+                                sx={{
+                                    width: '100%',
+                                    mb: 2,
+                                    borderRadius: 3,
+                                    textTransform: 'none',
+                                }}>
+                                Show stays
+                            </Button>
+                        )}
+
                         <FlexContainer
                             sx={{
                                 border: `1px solid ${theme.palette.grey[50]}`,
@@ -132,32 +147,40 @@ const SearchModal = ({ open, onClose, query, setQuery }: SearchHeaderProps) => {
                                 placeholderColorMain={totalGuests.total > 0}
                             />
 
-                            <StyledButtonDiv>
-                                <Button
-                                    variant='contained'
-                                    color='primary'
-                                    onClick={onClose}
-                                    sx={{
-                                        borderRadius: 3,
-                                        textTransform: 'none',
-                                    }}>
-                                    Show stays
-                                </Button>
-                            </StyledButtonDiv>
+                            {!isTablet && (
+                                <StyledButtonDiv>
+                                    <Button
+                                        variant='contained'
+                                        color='primary'
+                                        onClick={onClose}
+                                        sx={{
+                                            borderRadius: 3,
+                                            textTransform: 'none',
+                                        }}>
+                                        Show stays
+                                    </Button>
+                                </StyledButtonDiv>
+                            )}
                         </FlexContainer>
 
-                        <Grid
+                        {/* <Grid
                             container
                             spacing={2}
                             sx={{
                                 mt: 2,
-                                ml: 2,
-                                'MuiGrid-root>.MuiGrid-item': {
-                                    px: 4,
-                                    py: 0,
-                                },
-                            }}>
-                            <Grid item xs={4}>
+                                ...(!isTablet && {
+                                    ml: 2,
+                                }),
+                                // 'MuiGrid-root>.MuiGrid-item': {
+                                //     px: 4,
+                                //     py: 0,
+                                // },
+                            }}> */}
+                        <Box
+                            display='flex'
+                            flexDirection='row'
+                            alignItems='center'>
+                            <Box flex={'1/3'}>
                                 {searchTerm &&
                                     !query.location &&
                                     (locationFilter.length > 0 ? (
@@ -204,13 +227,14 @@ const SearchModal = ({ open, onClose, query, setQuery }: SearchHeaderProps) => {
                                     ) : (
                                         <Typography
                                             variant='subtitle1'
-                                            color={theme.palette.grey[400]}>
+                                            color={theme.palette.grey[400]}
+                                            marginBottom={3}>
                                             No locations found
                                         </Typography>
                                     ))}
                             </Grid>
 
-                            <Grid item xs={4}>
+                            <Grid item md={4} xs={6} marginBottom={3}>
                                 {viewGuestOptions && (
                                     <>
                                         <Box mb={6}>
@@ -241,7 +265,8 @@ const SearchModal = ({ open, onClose, query, setQuery }: SearchHeaderProps) => {
                                     </>
                                 )}
                             </Grid>
-                        </Grid>
+                            {/* </Grid> */}
+                        </Box>
                     </Container>
                 </StyledModal>
             </Fade>

@@ -5,6 +5,7 @@ import logo from '~/img/logo.jpg';
 import SearchModal from '~/components/searchModal/searchModal';
 import { GetListRequestQuery } from '~/types/stays';
 import { useTheme } from '@mui/material/styles';
+import { useResponsiveQueries } from '~/utility/mediaQueries';
 
 interface HeaderProps {
     query: GetListRequestQuery;
@@ -12,6 +13,8 @@ interface HeaderProps {
 }
 
 const Header: FC<HeaderProps> = ({ query, setQuery }) => {
+    const { isMobile } = useResponsiveQueries();
+
     const theme = useTheme();
 
     const [isModalOpen, setModalOpen] = useState(false);
@@ -55,31 +58,50 @@ const Header: FC<HeaderProps> = ({ query, setQuery }) => {
                 }}
                 onClick={handleModalOpen}
                 disableRipple>
-                <Typography
-                    variant='body2'
-                    color={locationCheck ? theme.palette.grey[400] : theme.palette.grey[100]}
-                    sx={{
-                        px: 2,
-                        py: 2,
-                        borderRightColor: theme.palette.grey[50],
-                        borderRightWidth: 1,
-                        borderRightStyle: 'solid',
-                    }}>
-                    {locationCheck || 'Find location'}
-                </Typography>
+                {isMobile ? (
+                    <Typography
+                        variant='body2'
+                        color={locationCheck ? theme.palette.grey[400] : theme.palette.grey[100]}
+                        sx={{
+                            px: 2,
+                            py: 2,
+                            borderRightColor: theme.palette.grey[50],
+                            borderRightWidth: 1,
+                            borderRightStyle: 'solid',
+                        }}>
+                        Filters
+                    </Typography>
+                ) : (
+                    <>
+                        <Typography
+                            variant='body2'
+                            color={
+                                locationCheck ? theme.palette.grey[400] : theme.palette.grey[100]
+                            }
+                            sx={{
+                                px: 2,
+                                py: 2,
+                                borderRightColor: theme.palette.grey[50],
+                                borderRightWidth: 1,
+                                borderRightStyle: 'solid',
+                            }}>
+                            {locationCheck || 'Find location'}
+                        </Typography>
 
-                <Typography
-                    variant='body2'
-                    color={guestCheck ? theme.palette.grey[400] : theme.palette.grey[100]}
-                    sx={{
-                        py: 2,
-                        px: 2,
-                        borderRightColor: theme.palette.grey[50],
-                        borderRightWidth: 1,
-                        borderRightStyle: 'solid',
-                    }}>
-                    {guestCheck ? totalGuestsText : 'Add guests'}
-                </Typography>
+                        <Typography
+                            variant='body2'
+                            color={guestCheck ? theme.palette.grey[400] : theme.palette.grey[100]}
+                            sx={{
+                                py: 2,
+                                px: 2,
+                                borderRightColor: theme.palette.grey[50],
+                                borderRightWidth: 1,
+                                borderRightStyle: 'solid',
+                            }}>
+                            {guestCheck ? totalGuestsText : 'Add guests'}
+                        </Typography>
+                    </>
+                )}
 
                 <Box
                     sx={{

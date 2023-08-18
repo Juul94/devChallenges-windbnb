@@ -4,6 +4,7 @@ import { Stay } from '~/types/stays';
 import { useTheme } from '@mui/material/styles';
 import StarRateIcon from '@mui/icons-material/StarRate';
 import { FlexBox } from '~/components/stayResults/stayResultsStyles';
+import { useResponsiveQueries } from '~/utility/mediaQueries';
 
 interface StayResultsProps {
     filteredStays: Stay[];
@@ -12,6 +13,7 @@ interface StayResultsProps {
 
 const StayResults: FC<StayResultsProps> = ({ filteredStays, handleTotalStays }) => {
     const theme = useTheme();
+    const { isMobile } = useResponsiveQueries();
 
     return (
         <Grid container spacing={4}>
@@ -25,6 +27,9 @@ const StayResults: FC<StayResultsProps> = ({ filteredStays, handleTotalStays }) 
                         md={4}
                         sx={{
                             mt: 2,
+                            ...(isMobile && {
+                                width: '100%',
+                            }),
                         }}>
                         <Box
                             style={{

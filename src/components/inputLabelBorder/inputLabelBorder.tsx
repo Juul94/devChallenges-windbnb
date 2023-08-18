@@ -3,7 +3,8 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import { useTheme } from '@mui/material/styles';
-import { Tooltip } from '@mui/material';
+import { Tooltip, useMediaQuery } from '@mui/material';
+import { useResponsiveQueries } from '~/utility/mediaQueries';
 
 interface BoxProps {
     borderColor?: string;
@@ -40,6 +41,7 @@ const InputLabelBorder: FC<InputLabelBorderProps> = ({
     placeholderColorMain,
 }) => {
     const theme = useTheme();
+    const { isTablet } = useResponsiveQueries();
 
     return (
         <Box
@@ -53,7 +55,7 @@ const InputLabelBorder: FC<InputLabelBorderProps> = ({
                     display: 'block',
                     mt: 2,
                     mb: 1.25,
-                    px: 4,
+                    px: isTablet ? 2 : 4,
                 }}>
                 <Typography variant='subtitle2' sx={{ pb: 1 }}>
                     {title}

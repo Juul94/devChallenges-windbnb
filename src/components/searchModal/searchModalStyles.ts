@@ -28,8 +28,8 @@ export const StyledModal = styled(Box)`
     width: 100%;
     outline: none;
     z-index: 1301;
-    padding: 95px 95px 50px 95px;
 `;
+// padding: 95px 95px 50px 95px;
 
 export const StyledButtonDiv = styled(Box)`
     text-align: center;
