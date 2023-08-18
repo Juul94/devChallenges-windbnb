@@ -8,7 +8,7 @@
 
 <div align="center">
   <h3>
-    <a href="[https://{your-url-to-the-solution}](https://juul94.github.io/devChallenges-windbnb)">
+    <a href="https://juul94.github.io/devChallenges-windbnb">
       Solution
     </a>
     <span> | </span>
