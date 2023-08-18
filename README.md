@@ -20,14 +20,13 @@
 
 ## Table of Contents
 
-- [Overview](#overview)
-  - [Built With](#built-with)
+- [Built With](#built-with)
 - [Features](#features)
 - [How to use](#how-to-use)
-- [Contact](#contact)
 - [Acknowledgements](#acknowledgements)
+- [Contact](#contact)
 
-### Built With
+## Built With
 
 - [React](https://reactjs.org/)
 - [Material-UI](https://mui.com/)
