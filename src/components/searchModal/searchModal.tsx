@@ -18,9 +18,10 @@ interface SearchHeaderProps {
     onClose: () => void;
     query: GetListRequestQuery;
     setQuery: (query: GetListRequestQuery) => void;
+    totalStays: number;
 }
 
-const SearchModal = ({ open, onClose, query, setQuery }: SearchHeaderProps) => {
+const SearchModal = ({ open, onClose, query, setQuery, totalStays }: SearchHeaderProps) => {
     const theme = useTheme();
     const { isTablet } = useResponsiveQueries();
 
@@ -113,18 +114,30 @@ const SearchModal = ({ open, onClose, query, setQuery }: SearchHeaderProps) => {
                 <StyledModal sx={isTablet ? { pt: 3 } : { p: '95px 95px 50px 95px' }}>
                     <Container maxWidth='lg'>
                         {isTablet && (
-                            <Button
-                                variant='contained'
-                                color='primary'
-                                onClick={onClose}
-                                sx={{
-                                    width: '100%',
-                                    mb: 2,
-                                    borderRadius: 3,
-                                    textTransform: 'none',
-                                }}>
-                                Show stays
-                            </Button>
+                            <>
+                                <Button
+                                    variant='contained'
+                                    color='primary'
+                                    onClick={onClose}
+                                    sx={{
+                                        width: '100%',
+                                        mb: 2,
+                                        borderRadius: 3,
+                                        textTransform: 'none',
+                                    }}>
+                                    Show stays
+                                </Button>
+
+                                <Typography
+                                    variant='subtitle1'
+                                    color={theme.palette.grey[400]}
+                                    marginBottom={2}
+                                    textAlign='center'>
+                                    {totalStays <= 0
+                                        ? 'No stays found'
+                                        : `${totalStays} stays found`}
+                                </Typography>
+                            </>
                         )}
 
                         <FlexContainer
@@ -163,24 +176,15 @@ const SearchModal = ({ open, onClose, query, setQuery }: SearchHeaderProps) => {
                             )}
                         </FlexContainer>
 
-                        {/* <Grid
-                            container
-                            spacing={2}
-                            sx={{
-                                mt: 2,
-                                ...(!isTablet && {
-                                    ml: 2,
-                                }),
-                                // 'MuiGrid-root>.MuiGrid-item': {
-                                //     px: 4,
-                                //     py: 0,
-                                // },
-                            }}> */}
                         <Box
                             display='flex'
                             flexDirection='row'
-                            alignItems='center'>
-                            <Box flex={'1/3'}>
+                            alignItems='center'
+                            marginTop={3}
+                            gap={2}
+                            marginLeft={isTablet ? 2 : 4}
+                            mb={3}>
+                            <Box sx={{ flex: isTablet ? 1 / 2 : 1 / 3 }}>
                                 {searchTerm &&
                                     !query.location &&
                                     (locationFilter.length > 0 ? (
@@ -232,9 +236,9 @@ const SearchModal = ({ open, onClose, query, setQuery }: SearchHeaderProps) => {
                                             No locations found
                                         </Typography>
                                     ))}
-                            </Grid>
+                            </Box>
 
-                            <Grid item md={4} xs={6} marginBottom={3}>
+                            <Box sx={{ flex: isTablet ? 1 / 2 : 1 / 3 }}>
                                 {viewGuestOptions && (
                                     <>
                                         <Box mb={6}>
@@ -264,8 +268,7 @@ const SearchModal = ({ open, onClose, query, setQuery }: SearchHeaderProps) => {
                                         />
                                     </>
                                 )}
-                            </Grid>
-                            {/* </Grid> */}
+                            </Box>
                         </Box>
                     </Container>
                 </StyledModal>

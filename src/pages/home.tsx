@@ -7,17 +7,14 @@ import { Box, Typography } from '@mui/material';
 
 interface HomeProps {
     query: GetListRequestQuery | null;
+    totalStays: number;
+    handleTotalStays: (total: number) => void;
 }
 
-const Home = ({ query }: HomeProps) => {
+const Home = ({ query, totalStays, handleTotalStays }: HomeProps) => {
     const theme = useTheme();
 
     const [filteredStays, setFilteredStays] = useState<Stay[]>();
-    const [totalStays, setTotalStays] = useState<number>(0);
-
-    const handleTotalStays = (total: number) => {
-        setTotalStays(total);
-    };
 
     const sortByRating = () => {
         const sorted = [...stays].sort((a, b) => b.rating - a.rating);

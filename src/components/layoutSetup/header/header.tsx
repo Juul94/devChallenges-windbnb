@@ -10,9 +10,10 @@ import { useResponsiveQueries } from '~/utility/mediaQueries';
 interface HeaderProps {
     query: GetListRequestQuery;
     setQuery: (query: GetListRequestQuery) => void;
+    totalStays: number;
 }
 
-const Header: FC<HeaderProps> = ({ query, setQuery }) => {
+const Header: FC<HeaderProps> = ({ query, setQuery, totalStays }) => {
     const { isMobile } = useResponsiveQueries();
 
     const theme = useTheme();
@@ -122,6 +123,7 @@ const Header: FC<HeaderProps> = ({ query, setQuery }) => {
                 onClose={handleModalClose}
                 query={query}
                 setQuery={setQuery}
+                totalStays={totalStays}
             />
         </Container>
     );
