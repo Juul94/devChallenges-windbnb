@@ -1,5 +1,6 @@
 {
     "name": "windbnb",
+    "homepage": "https://Juul94.github.io/devChallenges-windbnb",
     "private": true,
     "version": "0.0.0",
     "type": "module",
@@ -7,7 +8,9 @@
         "dev": "vite",
         "build": "tsc && vite build",
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-        "preview": "vite preview"
+        "preview": "vite preview",
+        "predeploy": "vite build",
+        "deploy": "gh-pages -d dist"
     },
     "dependencies": {
         "@emotion/react": "^11.11.1",
@@ -21,13 +24,13 @@
         "styled-components": "^6.0.5"
     },
     "devDependencies": {
-        "@types/node": "^20.4.4",
-        "@types/react": "^18.2.15",
+        "@types/node": "^20.4.5",
+        "@types/react": "^18.2.18",
         "@types/react-dom": "^18.2.7",
         "@types/react-router-dom": "^5.3.3",
         "@typescript-eslint/eslint-plugin": "^6.1.0",
         "@typescript-eslint/parser": "^6.1.0",
-        "@vitejs/plugin-react": "^4.0.3",
+        "@vitejs/plugin-react": "^4.0.4",
         "eslint": "^8.45.0",
         "eslint-config-next": "^13.4.12",
         "eslint-config-prettier": "^8.8.0",
@@ -36,10 +39,11 @@
         "eslint-plugin-react-hooks": "^4.6.0",
         "eslint-plugin-react-refresh": "^0.4.3",
         "eslint-plugin-unused-imports": "^3.0.0",
+        "gh-pages": "^5.0.0",
         "prettier": "^3.0.0",
         "tsconfig-paths-webpack-plugin": "^4.1.0",
-        "typescript": "^4.4.4",
-        "vite": "^4.4.6",
+        "typescript": "^4.9.5",
+        "vite": "^4.4.8",
         "vite-tsconfig-paths": "^4.2.0"
     }
 }

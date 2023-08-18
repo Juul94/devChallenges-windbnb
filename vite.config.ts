@@ -1,15 +1,15 @@
-import react from '@vitejs/plugin-react';
-import { resolve } from 'path';
 import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
+    base: '/devChallenges-windbnb',
     plugins: [react()],
-    define: {
-        'process.env': process.env,
+    build: {
+        outDir: 'build',
     },
     resolve: {
         alias: {
-            '~': resolve(__dirname, 'src'),
+            '~': '/src',
         },
     },
 });

@@ -7,7 +7,7 @@
         },
         "target": "ESNext",
         "lib": ["DOM", "DOM.Iterable", "ESNext"],
-        "types": ["vite/client"],
+        "types": ["vite/client", "node"],
         "allowJs": true,
         "skipLibCheck": false,
         "esModuleInterop": true,
@@ -17,7 +17,7 @@
         "module": "es2020",
         "moduleResolution": "Node",
         "resolveJsonModule": true,
-        "isolatedModules": true,
+        "isolatedModules": false,
         "noEmit": true,
         "jsx": "react-jsx"
     },
