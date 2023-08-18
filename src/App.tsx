@@ -22,8 +22,6 @@ const App = () => {
         setTotalStays(total);
     };
 
-    console.log(totalStays);
-
     return (
         <>
             <Header query={query} setQuery={setQuery} totalStays={totalStays} />
