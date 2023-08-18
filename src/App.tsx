@@ -24,7 +24,7 @@ const App = () => {
                 {/* <Route path='/:paramId/home' element={<Home />} /> */}
 
                 <Route
-                    path='/'
+                    path='/devChallenges-windbnb'
                     element={
                         <Layout>
                             <Home query={query} />
