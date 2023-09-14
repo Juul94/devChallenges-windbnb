@@ -34,7 +34,7 @@
 
 ## Features
 
-This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/3JFYedSOZqAxYuOCNmYD) was to build an application to complete the given user stories. I have made my own take on some extra features like instant/live update when selecing filters.
+This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/paths/front-end-developer) challenge. The [challenge](https://devchallenges.io/challenges/3JFYedSOZqAxYuOCNmYD) was to build an application to complete the given user stories. I have made my own take on some extra features like instant/live update when selecing filters.
 
 ## How To Use
 
@@ -55,7 +55,8 @@ $ npm start
 
 - [Node.js](https://nodejs.org/)
 - [Vite](https://vitejs.dev/)
-- [Eslint](https://eslint.org/) (+ typescript-eslint)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Eslint](https://eslint.org/) (+ Typescript-eslint)
 
 ## Contact
 
